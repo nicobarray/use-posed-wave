@@ -2,28 +2,39 @@
 
 > A React hook that returns a "react-pose" svg path component animated like a wave.
 
+<br/>
+<p align="center">
+  <img width="300" height="200" src="https://files-sdolfbukfx.now.sh" alt="Waves">
+</p>
+<br/>
+
 ## What ?
 
-Given a size `{ x: number, y: number }` parameter, the hook returns an enhanced <path /> component and a "pose" string to pass it. By default, every 3s the wave goes down, morph a little, then up - indefinitely.
+Given a size and amplitude parameters, the hook returns an enhanced <path /> component and a "pose" string to pass it. By default, every 3s the wave goes down, morph a little, then up - indefinitely.
 
 ### Example
 
-```jsx
+```javascript
 function App() {
   // Configure the wave animation and get the component to render.
   // Hint: You could pass the screen width as `x` and any height as `y`
   // to make a full screen width animation.
-  const [Wave, wavePose]  = usePosedWave({ x: 200, y: 100 });
+  const [Wave, wavePose]  = usePosedWave({ size: { x: 200, y: 50 , amplitude: 25 });
+  const [Foam, foamPose]  = usePosedWave({ size: { x: 200, y: 50 , amplitude: 35, originOffset: 15 });
 
   // The component being a SVG path tag, it must be wrapped inside a <svg/>
   // component.
   return (
-    <svg width={size.x} height={size.y}>
+    <svg width={size.x} height={size.y * 2} style={{ background: "sandybrown" }} >
+      {Foam && <Foam pose={foamPose} fill="white" />
       {Wave && <Wave pose={wavePose} fill="teal" />}
     </svg>
   )
 }
 ```
+
+⚠️ Note: The component will re-render if the "size" parameter changes. Either
+define it outside the component or with React.useState.
 
 ### Install
 
@@ -48,15 +59,21 @@ const { usePosedWave } = require('use-posed-wave')
 - A react hook that retuns the SVG path component.
 - Takes the following arguments:
   - Required:
-    - *size: { x: number, y: number }* The bounding rect of the animation.
-    - *amplitude: number* The animation's y distance in pixel it grows.
+    - `size: { x: number, y: number }` The bounding rect of the animation.
+    - `amplitude: number` The animation's y distance it grows (in pixel).
 
   - Optional:
-    - *optionalDuration: number || 3000* The duration for the wave to transit from one
+    - `optionalDuration: number || 3000` The duration for the wave to transit from one
   state to the other.
-    - *optionalOffset: number || 0* The y offset to add to the generated path.
-    - *optionalFade: boolean || false* Should the wave fade in and out during the
+    - `optionalOffset: number || 0` The y offset to add to the generated path.
+    - `optionalFade: boolean || false` Should the wave fade in and out during the
   transition?
+
+## Todo
+
+- [ ] Make the initial delay optional
+- [ ] Return the path component only (without the pose string)
+- [ ] Make the wave orientation dynamic (vertical, horizontal)
 
 ## Acknowledgement
 
