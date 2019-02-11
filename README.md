@@ -10,7 +10,8 @@
 
 ## What ?
 
-Given a size and amplitude parameters, the hook returns an enhanced <path /> component and a "pose" string to pass it. By default, every 3s the wave goes down, morph a little, then up - indefinitely.
+Given a size and amplitude parameters, the hook returns an enhanced <path /> component and a "pose" string to pass it. By default, every 3s the wave goes down, morphs a little, then up - indefinitely.
+Combine multiple waves with different colors to get the gif's result!
 
 ### Example
 
@@ -42,14 +43,12 @@ Has `react`, `react-pose` and `popmotion` as --peer dependencies.
 
 ```javascript
 yarn add use-posed-wave
-yarn add --peer react react-pose popmotion
 ```
 
 or
 
 ```javascript
 npm i use-posed-wave
-npm i --peer react react-pose popmotion
 ```
 
 ## API
@@ -74,6 +73,7 @@ const { usePosedWave } = require('use-posed-wave')
 - [ ] Make the initial delay optional
 - [ ] Return the path component only (without the pose string)
 - [ ] Make the wave orientation dynamic (vertical, horizontal)
+- [ ] Make it update on "amplitude" change
 
 ## Related
 
