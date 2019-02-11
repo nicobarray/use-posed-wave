@@ -75,6 +75,10 @@ const { usePosedWave } = require('use-posed-wave')
 - [ ] Return the path component only (without the pose string)
 - [ ] Make the wave orientation dynamic (vertical, horizontal)
 
+## Related
+
+- [useTimedIndex](https://github.com/nicobarray/use-timed-index) - Get an index value auto-incremented by 1 every X ms.
+
 ## Acknowledgement
 
 Without those libraries, this hook would not exists.
