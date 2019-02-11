@@ -82,5 +82,5 @@ function useWave({
   return [Path, pose]
 }
 
-exports.useSvgWave = useWave
+exports.usePosedWave = useWave
 
